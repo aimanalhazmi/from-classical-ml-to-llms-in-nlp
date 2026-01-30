@@ -20,29 +20,18 @@ This task compares classical tree-based models with Transformer-based and LLM ap
 ## Project structure
 ```text
 .
-├── data/                      # IMDB Dataset (Raw and Processed splits)
-├── evaluation-config.json     # Configuration for Task 4 benchmarks
-├── fine-tuning-config.json    # Configuration for PEFT/LoRA training
-├── neural-config.json         # Configuration for LSTM training
-├── ngram-config.json          # Configuration for Statistical models
-├── notebooks/                 # Jupyter notebooks for EDA and experiments
-├── outputs/                   # Training logs, checkpoints, and visualizations
-│   ├── fine-tuning/           # LoRA adapters and checkpoints
-│   ├── insights/              # Word clouds and class distribution plots
-│   ├── llm_judge/             # JSON outputs from Mistral/LLM evaluation
-│   ├── neural-lm/             # Saved LSTM models (.pt)
-│   └── ngrams/                # Saved pickle models and logs
-├── src/                       # Source code
-│   ├── evaluation/            # LLM-as-judge and metric logic
-│   ├── models/                # N-gram, Neural, and Fine-tuning implementations
-│   ├── preprocessor.py        # Text cleaning pipeline
-│   ├── split_data.py          # Stratified splitting logic
-│   ├── utils.py               # Helper functions
-│   └── visual.py              # Plotting utilities
-├── pyproject.toml             # Dependencies
-├── uv.lock                    # Locked versions
-├── README.md                  # Documentation
-└── REPORT.tex                 # LaTeX source of the final report
+├── data/                   # Raw datasets
+│   ├── IRIS.csv            # Dataset for Task 2
+│   └── SMM4H_2026/         # Dataset for Task 1
+├── src/                    # Source code with modular logic
+│   ├── task1/              # Scripts for Multilingual NLP
+│   └── task2/              # Scripts for Hybrid/Tree models
+├── notebooks/              # Exploratory Data Analysis (EDA) and testing
+├── report/                 # report (PDF/LaTeX)
+├── output/                 # Model checkpoints, logs, and visualizations
+├── main.py                 # Entry point to run tasks
+├── pyproject.toml          # Project metadata and dependencies (uv)
+└── uv.lock                 # Deterministic lockfile for reproducibility
 ``` 
 
 ---
