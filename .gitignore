@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+
+.vscode/
+.idea/
+.DS_Store
+.ipynb_checkpoints
+
+data/SMM4H_2026/*.csv
+data/*.csv
