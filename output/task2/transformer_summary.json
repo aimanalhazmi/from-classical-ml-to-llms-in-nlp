@@ -1,0 +1,97 @@
+{
+  "config": {
+    "data": {
+      "text_col": "text"
+    },
+    "early_stopping": {
+      "enabled": true,
+      "patience": 5
+    },
+    "labels": [
+      "setosa",
+      "versicolor",
+      "virginica"
+    ],
+    "model_name": "distilbert-base-uncased",
+    "num_examples": 1,
+    "num_labels": 3,
+    "print_examples": true,
+    "tokenization": {
+      "max_length": 512
+    },
+    "training_args": {
+      "bf16": false,
+      "eval_strategy": "epoch",
+      "fp16": false,
+      "greater_is_better": true,
+      "learning_rate": 5e-05,
+      "load_best_model_at_end": true,
+      "logging_steps": 50,
+      "metric_for_best_model": "macro_f1",
+      "num_train_epochs": 50,
+      "output_dir": "output/task2/transformer-rep-B",
+      "per_device_eval_batch_size": 8,
+      "per_device_train_batch_size": 4,
+      "report_to": "none",
+      "save_strategy": "epoch",
+      "save_total_limit": 1,
+      "seed": 42,
+      "use_cpu": true,
+      "weight_decay": 0.01
+    }
+  },
+  "experiments": {
+    "transformer": {
+      "results": [
+        {
+          "best_global_step": 120,
+          "best_metric": 1.0,
+          "best_model_checkpoint": "output/task2/transformer-rep-A/checkpoint-120",
+          "representation": "A",
+          "sample": {
+            "label": 1,
+            "text": "the flower has a sepal length of 6.6cm, a sepal width of 2.9cm, a petal length of 4.6cm, and a petal width of 1.3cm."
+          },
+          "test": {
+            "accuracy": 0.9333333333333333,
+            "macro_f1": 0.9326599326599326
+          },
+          "test_preds_file": "/Users/aiman/Studium/Master/3.Semester/ANLP/from-classical-ml-to-llms-in-nlp/output/task2/transformer_test_preds_repA.json",
+          "train": {
+            "accuracy": 0.9666666666666667,
+            "macro_f1": 0.966645820304357
+          },
+          "val": {
+            "accuracy": 1.0,
+            "macro_f1": 1.0
+          }
+        },
+        {
+          "best_global_step": 90,
+          "best_metric": 0.9326599326599326,
+          "best_model_checkpoint": "output/task2/transformer-rep-B/checkpoint-90",
+          "representation": "B",
+          "sample": {
+            "label": 1,
+            "text": "sl:6.6 sw:2.9 pl:4.6 pw:1.3"
+          },
+          "test": {
+            "accuracy": 0.8666666666666667,
+            "macro_f1": 0.8666666666666667
+          },
+          "test_preds_file": "/Users/aiman/Studium/Master/3.Semester/ANLP/from-classical-ml-to-llms-in-nlp/output/task2/transformer_test_preds_repB.json",
+          "train": {
+            "accuracy": 0.975,
+            "macro_f1": 0.9749960931395529
+          },
+          "val": {
+            "accuracy": 0.9333333333333333,
+            "macro_f1": 0.9326599326599326
+          }
+        }
+      ]
+    }
+  },
+  "run_id": "36692de808",
+  "timestamp_utc": "2026-02-09T22:50:18.734644+00:00"
+}

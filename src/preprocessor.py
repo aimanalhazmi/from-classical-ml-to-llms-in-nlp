@@ -11,7 +11,6 @@ from nltk.corpus import stopwords
 
 from datasets import DatasetDict, Dataset
 
-from src.utils import setup_logging
 
 # formatting imports
 from rich.console import Console
@@ -100,9 +99,6 @@ def token_filter(doc, config: CleanConfig) -> str:
 
 
 def apply_preprocessing_to_splits(dataset_dict, config_obj, text_column, label_column, force_logging=False):
-    global logger, console
-    logger, console = setup_logging(logger="preprocessor", force=force_logging)
-
     cleaned_splits = {}
     processed_col_name = text_column
 

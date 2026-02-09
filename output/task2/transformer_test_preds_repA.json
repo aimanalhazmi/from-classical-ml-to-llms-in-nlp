@@ -1,0 +1,15 @@
+{"text":"the flower has a sepal length of 6. 6cm, a sepal width of 2. 9cm, a petal length of 4. 6cm, and a petal width of 1. 3cm.","true_label":"versicolor","pred_label":"versicolor"}
+{"text":"the flower has a sepal length of 6. 1cm, a sepal width of 2. 6cm, a petal length of 5. 6cm, and a petal width of 1. 4cm.","true_label":"virginica","pred_label":"virginica"}
+{"text":"the flower has a sepal length of 6. 5cm, a sepal width of 3. 0cm, a petal length of 5. 2cm, and a petal width of 2. 0cm.","true_label":"virginica","pred_label":"virginica"}
+{"text":"the flower has a sepal length of 5. 6cm, a sepal width of 2. 5cm, a petal length of 3. 9cm, and a petal width of 1. 1cm.","true_label":"versicolor","pred_label":"versicolor"}
+{"text":"the flower has a sepal length of 7. 3cm, a sepal width of 2. 9cm, a petal length of 6. 3cm, and a petal width of 1. 8cm.","true_label":"virginica","pred_label":"virginica"}
+{"text":"the flower has a sepal length of 4. 4cm, a sepal width of 3. 2cm, a petal length of 1. 3cm, and a petal width of 0. 2cm.","true_label":"setosa","pred_label":"setosa"}
+{"text":"the flower has a sepal length of 4. 4cm, a sepal width of 3. 0cm, a petal length of 1. 3cm, and a petal width of 0. 2cm.","true_label":"setosa","pred_label":"setosa"}
+{"text":"the flower has a sepal length of 5. 0cm, a sepal width of 3. 4cm, a petal length of 1. 5cm, and a petal width of 0. 2cm.","true_label":"setosa","pred_label":"setosa"}
+{"text":"the flower has a sepal length of 6. 4cm, a sepal width of 2. 8cm, a petal length of 5. 6cm, and a petal width of 2. 2cm.","true_label":"virginica","pred_label":"virginica"}
+{"text":"the flower has a sepal length of 6. 6cm, a sepal width of 3. 0cm, a petal length of 4. 4cm, and a petal width of 1. 4cm.","true_label":"versicolor","pred_label":"versicolor"}
+{"text":"the flower has a sepal length of 5. 8cm, a sepal width of 4. 0cm, a petal length of 1. 2cm, and a petal width of 0. 2cm.","true_label":"setosa","pred_label":"setosa"}
+{"text":"the flower has a sepal length of 6. 5cm, a sepal width of 3. 0cm, a petal length of 5. 5cm, and a petal width of 1. 8cm.","true_label":"virginica","pred_label":"virginica"}
+{"text":"the flower has a sepal length of 6. 4cm, a sepal width of 3. 2cm, a petal length of 4. 5cm, and a petal width of 1. 5cm.","true_label":"versicolor","pred_label":"versicolor"}
+{"text":"the flower has a sepal length of 6. 7cm, a sepal width of 3. 0cm, a petal length of 5. 0cm, and a petal width of 1. 7cm.","true_label":"versicolor","pred_label":"virginica"}
+{"text":"the flower has a sepal length of 5. 2cm, a sepal width of 3. 4cm, a petal length of 1. 4cm, and a petal width of 0. 2cm.","true_label":"setosa","pred_label":"setosa"}
