@@ -81,6 +81,6 @@ if __name__ == "__main__":
     #llm = LLMClient(host="localhost", port=11434, model_name="mistral:latest") # with ollama
     #llm = LLMClient(host="localhost", port=1234, model_name="mistralai_devstral-small-2-24b-instruct-2512") # LMStudio # developer role
     llm = LLMClient(host="172.18.11.146", port=8080, model_name="mistralai/Devstral-Small-2-24B-Instruct-2512") #Server # system role
-
+    llm.test_connection()
     num_samples = 111 # set to 111 (len(train)).
     task2(llm, random_state=42, test_size=0.1, val_size=0.111,  num_samples=num_samples, n_shots= 3, root_dir=root_dir, config_path ="task2-config.json")

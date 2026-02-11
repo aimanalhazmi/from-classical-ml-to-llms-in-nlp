@@ -279,6 +279,7 @@ if __name__ == "__main__":
     #llm = LLMClient(host="localhost", port=11434, model_name="mistral:latest") # with ollama
     llm = LLMClient(host="localhost", port=1234, model_name="mistralai_devstral-small-2-24b-instruct-2512") # LM Studio
     #llm = LLMClient(host="172.18.11.146", port=8080, model_name="mistralai/Devstral-Small-2-24B-Instruct-2512") # Server
+    llm.test_connection()
     iris, X_train, y_train, X_val, y_val, X_test, y_test = load_and_split_iris(random_state=42, test_size=0.1, val_size=0.111)
     ROOT_DIR = Path(__file__).resolve().parents[2]
     config_path = ROOT_DIR / "task2-config.json"

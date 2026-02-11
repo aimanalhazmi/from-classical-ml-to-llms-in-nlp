@@ -39,7 +39,7 @@
           },
           "detailed_results": [
             {
-              "confidence": 0.0,
+              "confidence": 1.0,
               "is_correct": true,
               "orig_idx": 0,
               "predicted_label": "versicolor",
@@ -47,7 +47,7 @@
               "true_label": "versicolor"
             },
             {
-              "confidence": 0.0,
+              "confidence": 1.0,
               "is_correct": true,
               "orig_idx": 1,
               "predicted_label": "virginica",
@@ -55,7 +55,7 @@
               "true_label": "virginica"
             },
             {
-              "confidence": 0.0,
+              "confidence": 1.0,
               "is_correct": true,
               "orig_idx": 2,
               "predicted_label": "virginica",
@@ -63,7 +63,7 @@
               "true_label": "virginica"
             },
             {
-              "confidence": 0.0,
+              "confidence": 1.0,
               "is_correct": true,
               "orig_idx": 3,
               "predicted_label": "versicolor",
@@ -71,7 +71,7 @@
               "true_label": "versicolor"
             },
             {
-              "confidence": 0.0,
+              "confidence": 1.0,
               "is_correct": true,
               "orig_idx": 4,
               "predicted_label": "virginica",
@@ -103,7 +103,7 @@
               "true_label": "setosa"
             },
             {
-              "confidence": 0.0,
+              "confidence": 1.0,
               "is_correct": true,
               "orig_idx": 8,
               "predicted_label": "virginica",
@@ -111,7 +111,7 @@
               "true_label": "virginica"
             },
             {
-              "confidence": 0.0,
+              "confidence": 1.0,
               "is_correct": true,
               "orig_idx": 9,
               "predicted_label": "versicolor",
@@ -127,7 +127,7 @@
               "true_label": "setosa"
             },
             {
-              "confidence": 0.0,
+              "confidence": 1.0,
               "is_correct": true,
               "orig_idx": 11,
               "predicted_label": "virginica",
@@ -135,7 +135,7 @@
               "true_label": "virginica"
             },
             {
-              "confidence": 0.0,
+              "confidence": 1.0,
               "is_correct": true,
               "orig_idx": 12,
               "predicted_label": "versicolor",
@@ -143,7 +143,7 @@
               "true_label": "versicolor"
             },
             {
-              "confidence": 0.0,
+              "confidence": 1.0,
               "is_correct": false,
               "orig_idx": 13,
               "predicted_label": "virginica",
@@ -161,24 +161,24 @@
           ],
           "macro_f1": 0.9326599326599326,
           "metadata": {
-            "avg_time_per_sample": 0.4818901856740316,
+            "avg_time_per_sample": 2.620504601796468,
             "evaluated_num_samples": 15,
             "has_importance": true,
             "has_rules": true,
             "n_shots": 3,
             "requested_num_samples": 111,
             "total_correct": 14,
-            "total_inference_time": 7.228352785110474
+            "total_inference_time": 39.30756902694702
           }
         },
         "train": {
-          "accuracy": 0.954954954954955,
+          "accuracy": 0.9819819819819819,
           "classification_report": {
-            "accuracy": 0.954954954954955,
+            "accuracy": 0.9819819819819819,
             "macro avg": {
-              "f1-score": 0.9549467275494673,
-              "precision": 0.9551656920077972,
-              "recall": 0.954954954954955,
+              "f1-score": 0.9819688109161794,
+              "precision": 0.982905982905983,
+              "recall": 0.981981981981982,
               "support": 111.0
             },
             "setosa": {
@@ -188,35 +188,35 @@
               "support": 37.0
             },
             "versicolor": {
-              "f1-score": 0.9333333333333333,
-              "precision": 0.9210526315789473,
+              "f1-score": 0.9722222222222222,
+              "precision": 1.0,
               "recall": 0.9459459459459459,
               "support": 37.0
             },
             "virginica": {
-              "f1-score": 0.9315068493150684,
-              "precision": 0.9444444444444444,
-              "recall": 0.918918918918919,
+              "f1-score": 0.9736842105263158,
+              "precision": 0.9487179487179487,
+              "recall": 1.0,
               "support": 37.0
             },
             "weighted avg": {
-              "f1-score": 0.9549467275494673,
-              "precision": 0.9551656920077973,
-              "recall": 0.954954954954955,
+              "f1-score": 0.9819688109161794,
+              "precision": 0.9829059829059829,
+              "recall": 0.9819819819819819,
               "support": 111.0
             }
           },
           "detailed_results": [],
-          "macro_f1": 0.9549467275494673,
+          "macro_f1": 0.9819688109161794,
           "metadata": {
-            "avg_time_per_sample": 0.48058838028091566,
+            "avg_time_per_sample": 2.8449245852393075,
             "evaluated_num_samples": 111,
             "has_importance": true,
             "has_rules": true,
             "n_shots": 3,
             "requested_num_samples": 111,
-            "total_correct": 106,
-            "total_inference_time": 53.34531021118164
+            "total_correct": 109,
+            "total_inference_time": 315.7866289615631
           }
         },
         "val": {
@@ -257,14 +257,14 @@
           "detailed_results": [],
           "macro_f1": 1.0,
           "metadata": {
-            "avg_time_per_sample": 0.47712752024332683,
+            "avg_time_per_sample": 2.9276071866353353,
             "evaluated_num_samples": 15,
             "has_importance": true,
             "has_rules": true,
             "n_shots": 3,
             "requested_num_samples": 111,
             "total_correct": 15,
-            "total_inference_time": 7.156912803649902
+            "total_inference_time": 43.91410779953003
           }
         }
       },
@@ -306,7 +306,7 @@
           },
           "detailed_results": [
             {
-              "confidence": 0.8,
+              "confidence": 0.96,
               "is_correct": true,
               "orig_idx": 0,
               "predicted_label": "versicolor",
@@ -314,7 +314,7 @@
               "true_label": "versicolor"
             },
             {
-              "confidence": 0.9,
+              "confidence": 0.72,
               "is_correct": true,
               "orig_idx": 1,
               "predicted_label": "virginica",
@@ -322,7 +322,7 @@
               "true_label": "virginica"
             },
             {
-              "confidence": 0.9,
+              "confidence": 0.93,
               "is_correct": true,
               "orig_idx": 2,
               "predicted_label": "virginica",
@@ -330,7 +330,7 @@
               "true_label": "virginica"
             },
             {
-              "confidence": 0.9,
+              "confidence": 0.97,
               "is_correct": true,
               "orig_idx": 3,
               "predicted_label": "versicolor",
@@ -338,7 +338,7 @@
               "true_label": "versicolor"
             },
             {
-              "confidence": 0.95,
+              "confidence": 0.97,
               "is_correct": true,
               "orig_idx": 4,
               "predicted_label": "virginica",
@@ -346,7 +346,7 @@
               "true_label": "virginica"
             },
             {
-              "confidence": 0.95,
+              "confidence": 0.98,
               "is_correct": true,
               "orig_idx": 5,
               "predicted_label": "setosa",
@@ -354,7 +354,7 @@
               "true_label": "setosa"
             },
             {
-              "confidence": 0.95,
+              "confidence": 0.98,
               "is_correct": true,
               "orig_idx": 6,
               "predicted_label": "setosa",
@@ -362,7 +362,7 @@
               "true_label": "setosa"
             },
             {
-              "confidence": 0.95,
+              "confidence": 0.98,
               "is_correct": true,
               "orig_idx": 7,
               "predicted_label": "setosa",
@@ -370,7 +370,7 @@
               "true_label": "setosa"
             },
             {
-              "confidence": 0.95,
+              "confidence": 0.97,
               "is_correct": true,
               "orig_idx": 8,
               "predicted_label": "virginica",
@@ -378,7 +378,7 @@
               "true_label": "virginica"
             },
             {
-              "confidence": 0.8,
+              "confidence": 0.97,
               "is_correct": true,
               "orig_idx": 9,
               "predicted_label": "versicolor",
@@ -386,7 +386,7 @@
               "true_label": "versicolor"
             },
             {
-              "confidence": 0.9,
+              "confidence": 0.97,
               "is_correct": true,
               "orig_idx": 10,
               "predicted_label": "setosa",
@@ -394,7 +394,7 @@
               "true_label": "setosa"
             },
             {
-              "confidence": 0.9,
+              "confidence": 0.92,
               "is_correct": true,
               "orig_idx": 11,
               "predicted_label": "virginica",
@@ -402,7 +402,7 @@
               "true_label": "virginica"
             },
             {
-              "confidence": 0.9,
+              "confidence": 0.97,
               "is_correct": true,
               "orig_idx": 12,
               "predicted_label": "versicolor",
@@ -410,7 +410,7 @@
               "true_label": "versicolor"
             },
             {
-              "confidence": 0.8,
+              "confidence": 0.85,
               "is_correct": false,
               "orig_idx": 13,
               "predicted_label": "virginica",
@@ -418,7 +418,7 @@
               "true_label": "versicolor"
             },
             {
-              "confidence": 0.95,
+              "confidence": 0.99,
               "is_correct": true,
               "orig_idx": 14,
               "predicted_label": "setosa",
@@ -428,14 +428,14 @@
           ],
           "macro_f1": 0.9326599326599326,
           "metadata": {
-            "avg_time_per_sample": 0.4812203884124756,
+            "avg_time_per_sample": 2.164287726084391,
             "evaluated_num_samples": 15,
             "has_importance": false,
             "has_rules": false,
             "n_shots": 3,
             "requested_num_samples": 111,
             "total_correct": 14,
-            "total_inference_time": 7.218305826187134
+            "total_inference_time": 32.46431589126587
           }
         },
         "train": {
@@ -443,8 +443,8 @@
           "classification_report": {
             "accuracy": 0.9459459459459459,
             "macro avg": {
-              "f1-score": 0.9459064327485379,
-              "precision": 0.9467643467643466,
+              "f1-score": 0.9457875457875459,
+              "precision": 0.9492485833949248,
               "recall": 0.9459459459459459,
               "support": 111.0
             },
@@ -455,45 +455,45 @@
               "support": 37.0
             },
             "versicolor": {
-              "f1-score": 0.9210526315789473,
-              "precision": 0.8974358974358975,
-              "recall": 0.9459459459459459,
+              "f1-score": 0.9230769230769231,
+              "precision": 0.8780487804878049,
+              "recall": 0.972972972972973,
               "support": 37.0
             },
             "virginica": {
-              "f1-score": 0.9166666666666666,
-              "precision": 0.9428571428571428,
-              "recall": 0.8918918918918919,
+              "f1-score": 0.9142857142857143,
+              "precision": 0.9696969696969697,
+              "recall": 0.8648648648648649,
               "support": 37.0
             },
             "weighted avg": {
-              "f1-score": 0.945906432748538,
-              "precision": 0.9467643467643467,
+              "f1-score": 0.9457875457875458,
+              "precision": 0.9492485833949249,
               "recall": 0.9459459459459459,
               "support": 111.0
             }
           },
           "detailed_results": [],
-          "macro_f1": 0.9459064327485379,
+          "macro_f1": 0.9457875457875459,
           "metadata": {
-            "avg_time_per_sample": 0.49221922255851125,
+            "avg_time_per_sample": 2.1524817578427426,
             "evaluated_num_samples": 111,
             "has_importance": false,
             "has_rules": false,
             "n_shots": 3,
             "requested_num_samples": 111,
             "total_correct": 105,
-            "total_inference_time": 54.63633370399475
+            "total_inference_time": 238.92547512054443
           }
         },
         "val": {
-          "accuracy": 0.9333333333333333,
+          "accuracy": 0.8666666666666667,
           "classification_report": {
-            "accuracy": 0.9333333333333333,
+            "accuracy": 0.8666666666666667,
             "macro avg": {
-              "f1-score": 0.9326599326599326,
-              "precision": 0.9444444444444445,
-              "recall": 0.9333333333333332,
+              "f1-score": 0.8611111111111112,
+              "precision": 0.9047619047619048,
+              "recall": 0.8666666666666667,
               "support": 15.0
             },
             "setosa": {
@@ -503,40 +503,40 @@
               "support": 5.0
             },
             "versicolor": {
-              "f1-score": 0.9090909090909091,
-              "precision": 0.8333333333333334,
+              "f1-score": 0.8333333333333334,
+              "precision": 0.7142857142857143,
               "recall": 1.0,
               "support": 5.0
             },
             "virginica": {
-              "f1-score": 0.8888888888888888,
+              "f1-score": 0.75,
               "precision": 1.0,
-              "recall": 0.8,
+              "recall": 0.6,
               "support": 5.0
             },
             "weighted avg": {
-              "f1-score": 0.9326599326599326,
-              "precision": 0.9444444444444445,
-              "recall": 0.9333333333333333,
+              "f1-score": 0.8611111111111112,
+              "precision": 0.9047619047619048,
+              "recall": 0.8666666666666667,
               "support": 15.0
             }
           },
           "detailed_results": [],
-          "macro_f1": 0.9326599326599326,
+          "macro_f1": 0.8611111111111112,
           "metadata": {
-            "avg_time_per_sample": 0.4820420742034912,
+            "avg_time_per_sample": 2.2437126795450846,
             "evaluated_num_samples": 15,
             "has_importance": false,
             "has_rules": false,
             "n_shots": 3,
             "requested_num_samples": 111,
-            "total_correct": 14,
-            "total_inference_time": 7.230631113052368
+            "total_correct": 13,
+            "total_inference_time": 33.65569019317627
           }
         }
       }
     }
   },
-  "run_id": "5f48534496",
-  "timestamp_utc": "2026-02-09T22:52:35.732627+00:00"
+  "run_id": "b706ca2f22",
+  "timestamp_utc": "2026-02-11T16:28:37.155220+00:00"
 }

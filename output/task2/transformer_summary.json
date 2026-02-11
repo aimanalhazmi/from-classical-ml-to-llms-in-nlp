@@ -44,9 +44,9 @@
     "transformer": {
       "results": [
         {
-          "best_global_step": 120,
-          "best_metric": 1.0,
-          "best_model_checkpoint": "output/task2/transformer-rep-A/checkpoint-120",
+          "best_global_step": 60,
+          "best_metric": 0.9326599326599326,
+          "best_model_checkpoint": "output/task2/transformer-rep-A/checkpoint-60",
           "representation": "A",
           "sample": {
             "label": 1,
@@ -58,12 +58,12 @@
           },
           "test_preds_file": "/Users/aiman/Studium/Master/3.Semester/ANLP/from-classical-ml-to-llms-in-nlp/output/task2/transformer_test_preds_repA.json",
           "train": {
-            "accuracy": 0.9666666666666667,
-            "macro_f1": 0.966645820304357
+            "accuracy": 0.95,
+            "macro_f1": 0.9498746867167919
           },
           "val": {
-            "accuracy": 1.0,
-            "macro_f1": 1.0
+            "accuracy": 0.9333333333333333,
+            "macro_f1": 0.9326599326599326
           }
         },
         {
@@ -92,6 +92,6 @@
       ]
     }
   },
-  "run_id": "36692de808",
-  "timestamp_utc": "2026-02-09T22:50:18.734644+00:00"
+  "run_id": "8737399737",
+  "timestamp_utc": "2026-02-11T16:16:53.003077+00:00"
 }
