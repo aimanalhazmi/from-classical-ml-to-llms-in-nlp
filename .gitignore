@@ -17,6 +17,7 @@ wheels/
 
 data/SMM4H_2026/*.csv
 data/*.csv
+data/output/task2/*
 trainer_output
 Transformer-rep-A
 transformer-rep-A
