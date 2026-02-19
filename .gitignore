@@ -32,3 +32,4 @@ transformer-rep-B
 *.bin
 *.ckpt
 *.onnx
+.env
