@@ -347,7 +347,7 @@ def find_best_threshold(y_true, pos_scores):
     return best
 
 
-def print_threshold_sanity(console, scores, labels, threshold, title="Score / Threshold Sanity Check"):
+def print_threshold_sanity(scores, labels, threshold, title="Score / Threshold Sanity Check"):
     scores = np.asarray(scores)
     labels = np.asarray(labels).astype(int)
 
@@ -505,7 +505,7 @@ def run_training(config_path: str):
         #THRESHOLD = best["t"]
 
         preds = (scores >= THRESHOLD).astype(int)
-        print_threshold_sanity(scores, labels, THRESHOLD, title=f"{split_name} Sanity Check")
+        print_threshold_sanity(scores=scores, labels=labels, threshold=THRESHOLD, title=f"{split_name} Sanity Check")
 
         # Save Confusion Matrix
         save_confusion_matrix(
