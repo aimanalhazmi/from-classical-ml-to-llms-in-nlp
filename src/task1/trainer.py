@@ -40,7 +40,7 @@ console = Console()
 logger = logging.getLogger("task1_trainer")
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-THRESHOLD = 0.15 # 30
+THRESHOLD = 0.30 # 30
 
 
 accuracy_metric = evaluate.load("accuracy")
