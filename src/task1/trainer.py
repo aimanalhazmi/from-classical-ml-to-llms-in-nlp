@@ -40,8 +40,8 @@ console = Console()
 logger = logging.getLogger("task1_trainer")
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-THRESHOLD = 0.25
-EVAL_THRESHOLD = 0.25
+THRESHOLD = 0.15
+EVAL_THRESHOLD = 0.15
 
 
 accuracy_metric = evaluate.load("accuracy")
@@ -337,7 +337,7 @@ def run_training(config_path: str):
     tokenized_ds = dataset.map(tokenize_function, batched=True , fn_kwargs={"tokenizer": tokenizer, "max_length": max_len, "truncation": truncation})
 
     # Class Weights (for Imbalance)
-    # 4. Class Weights (Softer)
+    # Class Weights (Softer)
     class_weights = None
     if cfg["imbalance_handling"]["use_class_weights"]:
         # Get labels
@@ -370,8 +370,8 @@ def run_training(config_path: str):
         num_labels=cfg["num_labels"],
         id2label=id2label,
         label2id=label2id,
-        hidden_dropout_prob=0.3,  # from the paper!
-        attention_probs_dropout_prob=0.3  # from the paper!
+        #hidden_dropout_prob=0.3,  # from the paper!
+        #attention_probs_dropout_prob=0.3  # from the paper!
     )
     model = AutoModelForSequenceClassification.from_pretrained(model_name, config=model_config)
 

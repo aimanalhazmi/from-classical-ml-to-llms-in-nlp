@@ -1,10 +1,10 @@
 {
-  "best_global_step": 63,
-  "best_metric": 0.08928571428571429,
-  "best_model_checkpoint": "/Users/aiman/Studium/Master/3.Semester/ANLP/from-classical-ml-to-llms-in-nlp/output/task1/mono_trans_de/xlm-roberta-base/2026-02-19_05-38/checkpoint-63",
-  "epoch": 1.0,
+  "best_global_step": 126,
+  "best_metric": 0.10909090909090909,
+  "best_model_checkpoint": "/Users/aiman/Studium/Master/3.Semester/ANLP/from-classical-ml-to-llms-in-nlp/output/task1/mono_trans_de/xlm-roberta-base/2026-02-19_05-38/checkpoint-126",
+  "epoch": 2.0,
   "eval_steps": 500,
-  "global_step": 63,
+  "global_step": 126,
   "is_hyper_param_search": false,
   "is_local_process_zero": true,
   "is_world_process_zero": true,
@@ -22,6 +22,27 @@
       "eval_samples_per_second": 18.294,
       "eval_steps_per_second": 0.618,
       "step": 63
+    },
+    {
+      "epoch": 1.5873015873015874,
+      "grad_norm": 25.335519790649414,
+      "learning_rate": 9.805743243243244e-06,
+      "loss": 0.6077230453491211,
+      "step": 100
+    },
+    {
+      "epoch": 2.0,
+      "eval_accuracy": 0.8344594594594594,
+      "eval_f1": 0.10909090909090909,
+      "eval_loss": 0.44237983226776123,
+      "eval_pr_auc": 0.0671252657899908,
+      "eval_precision": 0.07692307692307693,
+      "eval_recall": 0.1875,
+      "eval_roc_auc": 0.5037946428571428,
+      "eval_runtime": 16.3667,
+      "eval_samples_per_second": 18.086,
+      "eval_steps_per_second": 0.611,
+      "step": 126
     }
   ],
   "logging_steps": 100,
@@ -50,7 +71,7 @@
       "attributes": {}
     }
   },
-  "total_flos": 34097548330560.0,
+  "total_flos": 68491096598400.0,
   "train_batch_size": 16,
   "trial_name": null,
   "trial_params": null
