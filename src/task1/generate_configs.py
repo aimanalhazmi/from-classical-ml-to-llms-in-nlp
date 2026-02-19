@@ -35,15 +35,17 @@ base_config = {
         "save_strategy": "epoch",
         "save_total_limit": 1,
         "learning_rate": 1e-5,
-        "warmup_steps": 0.06,
-        "lr_scheduler_type": "linear",
+        "warmup_steps": 0.10,
+        "lr_scheduler_type": "cosine",
+        "optim": "adafactor",
         "max_grad_norm": 1.0,
-        "per_device_train_batch_size": 16,
+        "per_device_train_batch_size": 32,
         "per_device_eval_batch_size": 32,
         "num_train_epochs": 20,
         "weight_decay": 0.05,
         "load_best_model_at_end": True,
         "metric_for_best_model": "f1",
+        "greater_is_better": True,
         "logging_steps": 100,
         "seed": 42,
         "report_to": "none",
@@ -66,6 +68,7 @@ cfg_en["dataset"] = {
     "text_column": "text", "label_column": "label",
     "train_lang": ["en"], # ONLY ENGLISH
     "eval_lang": ["en", "de"],
+    "sample_frac_zero": 0.50,
 }
 save_config("task1-mono-en", cfg_en)
 
@@ -81,6 +84,7 @@ cfg_ru["dataset"] = {
     "text_column": "text", "label_column": "label",
     "train_lang": ["ru"], # ONLY RUSSIAN
     "eval_lang": ["ru"],
+    "sample_frac_zero": 0.50,
 }
 save_config("task1-mono-ru", cfg_ru)
 
@@ -95,6 +99,7 @@ cfg_multi["dataset"] = {
     "text_column": "text", "label_column": "label",
     "train_lang": ["en", "ru"], # COMBINED
     "eval_lang": ["en", "ru", "de"],
+    "sample_frac_zero": 0.50,
 }
 save_config("task1-multi-en-ru", cfg_multi)
 
@@ -111,6 +116,7 @@ cfg_trans["dataset"] = {
     "train_lang" : None, # No filter
     "multi_trans" : False, # Only text col for de
     "eval_lang": ["de"],
+
 }
 save_config("task1-mono-trans-de", cfg_trans)
 
