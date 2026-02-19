@@ -1,6 +1,6 @@
 from pathlib import Path
 import json
-
+import pandas as pd
 from rich.console import Console
 from rich.pretty import Pretty
 from rich.table import Table
@@ -42,3 +42,29 @@ def build_label_maps(cfg: dict, num_labels: int):
     id2label = {i: name for i, name in enumerate(labels)}
     label2id = {name: i for i, name in enumerate(labels)}
     return id2label, label2id
+
+
+def get_project_root() -> Path:
+    """
+    Returns project root folder.
+    """
+    current_path = Path(__file__).resolve()
+    for parent in [current_path] + list(current_path.parents):
+        if (parent / '.git').exists() or (parent / 'pyproject.toml').exists():
+            return parent
+    return current_path.parent
+
+
+def display_samples(df: pd.DataFrame, n: int = 5):
+    """Displays a Rich Table with original and translated examples."""
+    table = Table(title=f"Translation Preview (First {n} samples)", show_lines=True)
+    table.add_column("Original (EN)", style="cyan", ratio=1)
+    table.add_column("Translated (DE)", style="green", ratio=1)
+
+    # Take the first n successfully translated rows
+    preview_df = df.head(n)
+
+    for _, row in preview_df.iterrows():
+        table.add_row(str(row['text_source']), str(row['text']))
+
+    console.print(table)

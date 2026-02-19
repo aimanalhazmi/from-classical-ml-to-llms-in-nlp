@@ -23,3 +23,12 @@ Transformer-rep-A
 transformer-rep-A
 Transformer-rep-B
 transformer-rep-B
+
+.DS_Store
+.ipynb_checkpoints
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.ckpt
+*.onnx

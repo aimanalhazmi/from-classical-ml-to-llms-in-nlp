@@ -1,0 +1,55 @@
+{
+    "timing": {
+        "epoch_times": [
+            {
+                "epoch": 1.0,
+                "seconds": 78.86018729100033
+            },
+            {
+                "epoch": 2.0,
+                "seconds": 89.93752254099672
+            },
+            {
+                "epoch": 3.0,
+                "seconds": 83.2742142499992
+            }
+        ],
+        "total_time": 252.07192408199626
+    },
+    "global_val": {
+        "test_loss": 0.660965621471405,
+        "test_accuracy": 0.05405405405405406,
+        "test_precision": 0.05405405405405406,
+        "test_recall": 1.0,
+        "test_f1": 0.10256410256410256,
+        "test_pr_auc": 0.118106638554165,
+        "test_roc_auc": 0.7506696428571428,
+        "test_runtime": 17.2025,
+        "test_samples_per_second": 17.207,
+        "test_steps_per_second": 0.581
+    },
+    "global_test": {
+        "test_loss": 0.6559687256813049,
+        "test_accuracy": 0.055205047318611984,
+        "test_precision": 0.055205047318611984,
+        "test_recall": 1.0,
+        "test_f1": 0.10463378176382661,
+        "test_pr_auc": 0.11522535592021554,
+        "test_roc_auc": 0.718483186262819,
+        "test_runtime": 41.3269,
+        "test_samples_per_second": 15.341,
+        "test_steps_per_second": 0.484
+    },
+    "test_lang_de": {
+        "test_loss": 0.6559687256813049,
+        "test_accuracy": 0.055205047318611984,
+        "test_precision": 0.055205047318611984,
+        "test_recall": 1.0,
+        "test_f1": 0.10463378176382661,
+        "test_pr_auc": 0.11522535592021554,
+        "test_roc_auc": 0.718483186262819,
+        "test_runtime": 39.9248,
+        "test_samples_per_second": 15.88,
+        "test_steps_per_second": 0.501
+    }
+}

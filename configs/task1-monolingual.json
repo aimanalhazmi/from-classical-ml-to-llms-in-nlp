@@ -1,0 +1,52 @@
+{
+  "project_name": "SMM4H_Task1",
+  "model_name": "xlm-roberta-base",
+  "output_dir": "output/task1/monolingual",
+  "num_labels": 2,
+  "id2label": {
+    "0": "NoADE",
+    "1": "ADE"
+  },
+  "label2id": {
+    "NoADE": 0,
+    "ADE": 1
+  },
+  "dataset": {
+    "train_path": "data/SMM4H_2026/train.csv",
+    "val_path": "data/SMM4H_2026/val.csv",
+    "test_path": "data/SMM4H_2026/test.csv",
+    "text_column": "text",
+    "label_column": "label",
+    "lang_filter": ["en"]
+  },
+  "tokenization": {
+    "max_length": 512,
+    "truncation": true,
+    "padding": "max_length"
+  },
+  "training_args": {
+    "eval_strategy": "epoch",
+    "save_strategy": "epoch",
+    "save_total_limit": 1,
+    "learning_rate": 1e-4,
+    "per_device_train_batch_size": 16,
+    "per_device_eval_batch_size": 32,
+    "num_train_epochs": 5,
+    "weight_decay": 0.01,
+    "load_best_model_at_end": true,
+    "metric_for_best_model": "f1",
+    "logging_steps": 100,
+    "seed": 42,
+    "report_to": "none",
+    "use_cpu": true,
+    "fp16": false,
+    "bf16": false
+  },
+  "imbalance_handling": {
+    "use_class_weights": true
+  },
+  "early_stopping": {
+    "enabled": true,
+    "patience": 5
+  }
+}

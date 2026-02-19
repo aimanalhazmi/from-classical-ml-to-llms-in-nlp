@@ -1,0 +1,57 @@
+{
+  "best_global_step": 63,
+  "best_metric": 0.2857142857142857,
+  "best_model_checkpoint": "/Users/aiman/Studium/Master/3.Semester/ANLP/from-classical-ml-to-llms-in-nlp/output/task1/mono_trans_de/xlm-roberta-base/2026-02-19_05-09/checkpoint-63",
+  "epoch": 1.0,
+  "eval_steps": 500,
+  "global_step": 63,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 1.0,
+      "eval_accuracy": 0.847972972972973,
+      "eval_f1": 0.2857142857142857,
+      "eval_loss": 0.3853238523006439,
+      "eval_pr_auc": 0.17295453806859984,
+      "eval_precision": 0.19148936170212766,
+      "eval_recall": 0.5625,
+      "eval_roc_auc": 0.8203125,
+      "eval_runtime": 14.8664,
+      "eval_samples_per_second": 19.911,
+      "eval_steps_per_second": 0.673,
+      "step": 63
+    }
+  ],
+  "logging_steps": 100,
+  "max_steps": 378,
+  "num_input_tokens_seen": 0,
+  "num_train_epochs": 6,
+  "save_steps": 500,
+  "stateful_callbacks": {
+    "EarlyStoppingCallback": {
+      "args": {
+        "early_stopping_patience": 2,
+        "early_stopping_threshold": 0.0
+      },
+      "attributes": {
+        "early_stopping_patience_counter": 0
+      }
+    },
+    "TrainerControl": {
+      "args": {
+        "should_epoch_stop": false,
+        "should_evaluate": false,
+        "should_log": false,
+        "should_save": true,
+        "should_training_stop": false
+      },
+      "attributes": {}
+    }
+  },
+  "total_flos": 34097548330560.0,
+  "train_batch_size": 16,
+  "trial_name": null,
+  "trial_params": null
+}
