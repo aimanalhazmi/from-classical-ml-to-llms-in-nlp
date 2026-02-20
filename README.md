@@ -66,36 +66,6 @@ Make sure .env is in .gitignore.
 
 ---
 
-## Adding / removing dependencies with uv
-Always manage dependencies via uv so that both pyproject.toml and uv.lock stay consistent.
-
-1. Add a new dependency
-``` Bash
-# Add a runtime dependency
-uv add package-name
-
-# Add a dev-only dependency (e.g., testing, linting)
-uv add --dev pytest
-```
-This will:
-- Update [project.dependencies] (or [project.optional-dependencies] / dev section)
-- Update uv.lock with the resolved versions
-
-2. Remove a dependency
-``` Bash
-uv remove package-name
-```
-
-This will:
-- Remove it from pyproject.toml
-- Update uv.lock accordingly
-
-After adding or removing dependencies, you can re-sync to ensure the environment matches:
-``` Bash
-uv sync
-```
----
-
 ## Running Task 1: Multilingual NLP
 
 ### 1. Preprocessing
@@ -190,4 +160,37 @@ uv run main.py
 ``` Bash
 uv run jupyter lab
 ```
+
+---
+
+
+## Adding / removing dependencies with uv
+Always manage dependencies via uv so that both pyproject.toml and uv.lock stay consistent.
+
+1. Add a new dependency
+``` Bash
+# Add a runtime dependency
+uv add package-name
+
+# Add a dev-only dependency (e.g., testing, linting)
+uv add --dev pytest
+```
+This will:
+- Update [project.dependencies] (or [project.optional-dependencies] / dev section)
+- Update uv.lock with the resolved versions
+
+2. Remove a dependency
+``` Bash
+uv remove package-name
+```
+
+This will:
+- Remove it from pyproject.toml
+- Update uv.lock accordingly
+
+After adding or removing dependencies, you can re-sync to ensure the environment matches:
+``` Bash
+uv sync
+```
+
 ---
