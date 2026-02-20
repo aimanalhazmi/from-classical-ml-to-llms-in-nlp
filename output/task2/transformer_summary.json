@@ -17,7 +17,7 @@
     "num_labels": 3,
     "print_examples": true,
     "tokenization": {
-      "max_length": 512
+      "max_length": 256
     },
     "training_args": {
       "bf16": false,
@@ -44,22 +44,22 @@
     "transformer": {
       "results": [
         {
-          "best_global_step": 60,
+          "best_global_step": 120,
           "best_metric": 0.9326599326599326,
-          "best_model_checkpoint": "output/task2/transformer-rep-A/checkpoint-60",
+          "best_model_checkpoint": "output/task2/transformer-rep-A/checkpoint-120",
           "representation": "A",
           "sample": {
             "label": 1,
             "text": "the flower has a sepal length of 6.6cm, a sepal width of 2.9cm, a petal length of 4.6cm, and a petal width of 1.3cm."
           },
           "test": {
-            "accuracy": 0.9333333333333333,
-            "macro_f1": 0.9326599326599326
+            "accuracy": 0.8666666666666667,
+            "macro_f1": 0.8666666666666667
           },
           "test_preds_file": "/Users/aiman/Studium/Master/3.Semester/ANLP/from-classical-ml-to-llms-in-nlp/output/task2/transformer_test_preds_repA.json",
           "train": {
-            "accuracy": 0.95,
-            "macro_f1": 0.9498746867167919
+            "accuracy": 0.975,
+            "macro_f1": 0.9749960931395529
           },
           "val": {
             "accuracy": 0.9333333333333333,
@@ -92,6 +92,6 @@
       ]
     }
   },
-  "run_id": "8737399737",
-  "timestamp_utc": "2026-02-11T16:16:53.003077+00:00"
+  "run_id": "86887d2b18",
+  "timestamp_utc": "2026-02-19T23:49:12.196069+00:00"
 }

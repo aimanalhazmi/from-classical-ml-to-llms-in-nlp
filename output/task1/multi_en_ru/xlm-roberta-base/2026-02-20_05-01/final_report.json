@@ -1,0 +1,147 @@
+{
+    "timing": {
+        "epoch_times": [
+            {
+                "epoch": 1.0,
+                "seconds": 2564.6967591249995
+            },
+            {
+                "epoch": 2.0,
+                "seconds": 2265.581919125005
+            },
+            {
+                "epoch": 3.0,
+                "seconds": 2828.3993266670004
+            },
+            {
+                "epoch": 4.0,
+                "seconds": 2889.905026082997
+            },
+            {
+                "epoch": 5.0,
+                "seconds": 2590.9050616669992
+            },
+            {
+                "epoch": 6.0,
+                "seconds": 3331.203871000005
+            },
+            {
+                "epoch": 7.0,
+                "seconds": 2279.3250860410044
+            },
+            {
+                "epoch": 8.0,
+                "seconds": 2909.5373641669867
+            },
+            {
+                "epoch": 9.0,
+                "seconds": 3039.9776785830036
+            },
+            {
+                "epoch": 10.0,
+                "seconds": 2424.5155404589896
+            },
+            {
+                "epoch": 11.0,
+                "seconds": 2776.2452744159964
+            },
+            {
+                "epoch": 12.0,
+                "seconds": 1979.2751791670162
+            },
+            {
+                "epoch": 13.0,
+                "seconds": 2596.809755208
+            },
+            {
+                "epoch": 14.0,
+                "seconds": 2688.6133645829977
+            },
+            {
+                "epoch": 15.0,
+                "seconds": 2668.66173933298
+            },
+            {
+                "epoch": 16.0,
+                "seconds": 2432.1976941660105
+            },
+            {
+                "epoch": 17.0,
+                "seconds": 1950.5097178749857
+            },
+            {
+                "epoch": 18.0,
+                "seconds": 3613.241058125015
+            },
+            {
+                "epoch": 19.0,
+                "seconds": 1856.727221749985
+            },
+            {
+                "epoch": 20.0,
+                "seconds": 3014.2582440419937
+            }
+        ],
+        "total_time": 52700.58688158197
+    },
+    "global_val": {
+        "test_loss": 0.4242788255214691,
+        "test_accuracy": 0.864763207385878,
+        "test_precision": 0.36045494313210846,
+        "test_recall": 0.8728813559322034,
+        "test_f1": 0.5102167182662539,
+        "test_pr_auc": 0.6516378849205696,
+        "test_roc_auc": 0.9405938428901506,
+        "test_runtime": 441.471,
+        "test_samples_per_second": 13.249,
+        "test_steps_per_second": 0.415
+    },
+    "global_test": {
+        "test_loss": 0.46821823716163635,
+        "test_accuracy": 0.835243553008596,
+        "test_precision": 0.3360488798370672,
+        "test_recall": 0.8967391304347826,
+        "test_f1": 0.4888888888888889,
+        "test_pr_auc": 0.6025996958471848,
+        "test_roc_auc": 0.9278625085363078,
+        "test_runtime": 243.1754,
+        "test_samples_per_second": 17.222,
+        "test_steps_per_second": 0.539
+    },
+    "test_lang_de": {
+        "test_loss": 1.1002153158187866,
+        "test_accuracy": 0.6309148264984227,
+        "test_precision": 0.11877394636015326,
+        "test_recall": 0.8857142857142857,
+        "test_f1": 0.20945945945945946,
+        "test_pr_auc": 0.17793192842711633,
+        "test_roc_auc": 0.806677796327212,
+        "test_runtime": 37.4971,
+        "test_samples_per_second": 16.908,
+        "test_steps_per_second": 0.533
+    },
+    "test_lang_en": {
+        "test_loss": 0.24898067116737366,
+        "test_accuracy": 0.9084745762711864,
+        "test_precision": 0.4264705882352941,
+        "test_recall": 0.9508196721311475,
+        "test_f1": 0.5888324873096447,
+        "test_pr_auc": 0.6754176755231751,
+        "test_roc_auc": 0.968148177622155,
+        "test_runtime": 12.9248,
+        "test_samples_per_second": 68.473,
+        "test_steps_per_second": 2.166
+    },
+    "test_lang_ru": {
+        "test_loss": 0.41043415665626526,
+        "test_accuracy": 0.8594979393031098,
+        "test_precision": 0.41196581196581195,
+        "test_recall": 0.8860294117647058,
+        "test_f1": 0.5624270711785297,
+        "test_pr_auc": 0.7025048850787364,
+        "test_roc_auc": 0.9365429212986822,
+        "test_runtime": 111.339,
+        "test_samples_per_second": 23.972,
+        "test_steps_per_second": 0.754
+    }
+}

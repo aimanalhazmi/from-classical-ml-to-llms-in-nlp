@@ -350,6 +350,57 @@ def plot_label_distribution(df: pd.DataFrame, dataset_name: str, out_dir: Path) 
     plt.close()
 
 
+def plot_combined_label_distribution(datasets: Dict[str, pd.DataFrame], out_dir: Path) -> None:
+    sns.set_theme(style="whitegrid", context="paper", font_scale=1.2)
+
+    fig, axes = plt.subplots(1, 3, figsize=(14, 7), sharey=False)
+
+    splits = [("train", "Train"), ("val", "Validation"), ("test", "Test")]
+    lang_order = ["en", "ru", "de"]
+
+    for i, (split_key, title) in enumerate(splits):
+        if split_key not in datasets:
+            continue
+
+        df = datasets[split_key]
+        if "language" not in df.columns or "label" not in df.columns:
+            continue
+
+        ax = sns.countplot(
+            data=df,
+            x="language",
+            order=lang_order,
+            hue="label",
+            hue_order=LABEL_ORDER,
+            palette=LABEL_COLOR_MAP,
+            edgecolor="black",
+            ax=axes[i]
+        )
+
+        ax.set_title(f"Label Distribution ({title})", fontsize=14)
+        ax.set_xlabel("Language")
+        ax.set_ylabel("Count" if i == 0 else "")
+
+
+        if i == 2:
+            ax.legend(title="Label", labels=["Negative (0)", "Positive (1)"])
+        else:
+            if ax.get_legend():
+                ax.get_legend().remove()
+
+        # Add the number labels on top of the bars
+        for container in ax.containers:
+            ax.bar_label(container, padding=3)
+
+    sns.despine()
+    plt.tight_layout()
+
+    save_path = out_dir / "label_distribution_combined.png"
+    plt.savefig(save_path, format="png", bbox_inches="tight")
+    plt.close()
+
+    logger.info(f"Saved combined plot to: {save_path}")
+
 def plot_type_distribution(
     df: pd.DataFrame,
     dataset_name: str,
@@ -570,6 +621,7 @@ def run_analysis(datasets: Dict[str, pd.DataFrame], out_dir: Path) -> None:
 
     if "translated" in datasets:
         compare_translation(datasets["translated"])
+    plot_combined_label_distribution(datasets, out_dir)
 
 
 if __name__ == "__main__":

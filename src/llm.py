@@ -42,7 +42,7 @@ def AssistantMessage(content: str) -> ChatCompletionAssistantMessageParam:
 SYSTEM_MESSAGE = """You are a helpful assistant."""
 
 class Client:
-    def __init__(self, host: str = 'localhost', port: int = 8000, base_url: str = None, model_name: str = "mistralai_devstral-small-2-24b-instruct-2512", api_key: str = None):
+    def __init__(self, host: str = 'localhost', port: int = 8000, base_url: str = None, model_name: str = "mistralai_devstral-small-2-24b-instruct-2512", api_key: str = None, system_role: str = "system"):
         self.logger = logging.getLogger(__name__)
         if base_url:
             self.base_url = base_url
@@ -56,9 +56,10 @@ class Client:
         )
         self.available_models = self.get_models()
         self.model = self.validate_model(model_name)
+        self.system_role = system_role
 
     def generate(self,  user_message: str, system_message: str=SYSTEM_MESSAGE, system_role: str = "system"):
-        if system_role == "developer":
+        if self.system_role == "developer" or system_role == "developer":
             developer_message = DeveloperMessage(system_message)
         else:
             developer_message = SystemMessage(system_message)
@@ -174,8 +175,6 @@ class Client:
 
 
 if __name__ == "__main__":
-    #llm = Client(host="localhost", port=11434, model_name="mistral:latest")
-    #llm = Client(host="localhost", port=1234, model_name="mistralai_devstral-small-2-24b-instruct-2512") # developer role
-    #llm = Client(host="172.18.11.146", port=8080, model_name="mistralai/Devstral-Small-2-24B-Instruct-2512") # system role
-    llm = Client(base_url="https://chat-ai.academiccloud.de/v1" , model_name="mistral-large-3-675b-instruct-2512") # system role
+    llm = Client(host="localhost", port=1234, model_name="mistralai_devstral-small-2-24b-instruct-2512", system_role="developer") # developer role
+    #llm = Client(base_url="https://chat-ai.academiccloud.de/v1" , model_name="mistral-large-3-675b-instruct-2512") # system role
     llm.test_connection()

@@ -20,16 +20,16 @@ This task compares classical tree-based models with Transformer-based and LLM ap
 ## Project structure
 ```text
 .
+├── configs/                # JSON configurations for Task 1 and Task 2
 ├── data/                   # Raw datasets
 │   ├── IRIS.csv            # Dataset for Task 2
 │   └── SMM4H_2026/         # Dataset for Task 1
 ├── src/                    # Source code with modular logic
 │   ├── task1/              # Scripts for Multilingual NLP
 │   └── task2/              # Scripts for Hybrid/Tree models
-├── notebooks/              # Exploratory Data Analysis (EDA) and testing
-├── report/                 # report (PDF/LaTeX)
+├── report/                 # report (PDF)
 ├── output/                 # Model checkpoints, logs, and visualizations
-├── main.py                 # Entry point to run tasks
+├── main.py                 # Entry point for Task 2 execution
 ├── pyproject.toml          # Project metadata and dependencies (uv)
 └── uv.lock                 # Deterministic lockfile for reproducibility
 ``` 
@@ -96,12 +96,95 @@ uv sync
 ```
 ---
 
-## Running the Application
+## Running Task 1: Multilingual NLP
+
+### 1. Preprocessing
+
+Clean the raw data and create splits (80% Train, 10% Val, 10% Test) in data/SMM4H_2026.
+
+``` Bash
+
+uv run src/task1/preprocessor.py
+```
+
+### 2. Exploratory Data Analysis (Optional)
+
+Run EDA on the preprocessed splits. Results are saved in output/task1/eda.
+
+``` Bash
+
+uv run src/task1/explorer.py
+```
+
+### 3. Generate Configurations
+
+Generate model-specific config files in the configs/ directory. These files define hyperparameters for the training process.
+
+``` Bash
+
+uv run src/task1/generate_configs.py
+```
+
+### 4. Training
+
+Train a model using a specific config (e.g., Multilingual English-Russian).
+
+``` Bash
+
+uv run src/task1/trainer.py configs/task1-multi-en-ru.json
+```
+
+### 5. Evaluation
+
+Evaluate a specific model checkpoint with a custom threshold.
+
+``` Bash
+
+uv run src/task1/evaluate_model.py \
+  --config configs/task1-mono-ru.json \
+  --checkpoint output/task1/mono_ru/xlm-roberta-base/2026-02-19_13-00/final \
+  --threshold 0.15 \
+  --per_language
+
+```
+
+---
+
+## Running Task 2: Hybrid Modeling
+
+ask 2 requires a local LLM server and specific configurations.
+
+### 1. Modify Configuration
+
+Before running, you can fine-tune Task 2 parameters (sample size, shots, etc.) in the config file:
+Location: configs/task2-config.json
+
+### 2. LLM Client Setup
+
+Ensure the LLMClient in main.py matches your local server settings.
+
+``` Bash
+
+# Default: LM Studio on port 1234
+llm = LLMClient(
+    host="localhost", 
+    port=1234, 
+    model_name="mistralai_devstral-small-2-24b-instruct-2512", 
+    system_role="developer"
+)
+
+```
+
+### 3. Run Pipeline
+
+Ensure the LLMClient in main.py matches your local server settings.
 
 ``` Bash
 
 uv run main.py
+
 ```
+
 ---
 ## Working With JupyterLab
 ``` Bash

@@ -1,6 +1,5 @@
 import json
 import sys
-import time
 from datetime import datetime
 import logging
 import numpy as np
@@ -14,7 +13,7 @@ from transformers import (
     Trainer,
     TrainingArguments,
     DataCollatorWithPadding,
-    EarlyStoppingCallback, TrainerCallback
+    EarlyStoppingCallback
  )
 import evaluate
 from datasets import Dataset, DatasetDict
@@ -32,7 +31,7 @@ from rich.panel import Panel
 from src.task1.explorer import print_label_by_language
 from src.task1.preprocessor import preprocess, SMM4HConfig
 from src.utils import get_project_root, load_config
-
+from src.task1.helper import TimingCallback, print_threshold_sanity
 
 
 # Setup
@@ -40,7 +39,7 @@ console = Console()
 logger = logging.getLogger("task1_trainer")
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-THRESHOLD = 0.30 # 30
+THRESHOLD = 0.15 # 30
 
 
 accuracy_metric = evaluate.load("accuracy")
@@ -75,36 +74,6 @@ class ClassWeightedTrainer(Trainer):
 
 
 
-class TimingCallback(TrainerCallback):
-    def __init__(self, logger=None):
-        self.logger = logger or logging.getLogger(__name__)
-        self.train_start = None
-        self.epoch_start = None
-        self.epoch_times = []
-
-    def on_train_begin(self, args, state, control, **kwargs):
-        self.train_start = time.perf_counter()
-        self.epoch_times = []
-        self.logger.info("Training started.")
-
-    def on_epoch_begin(self, args, state, control, **kwargs):
-        self.epoch_start = time.perf_counter()
-        self.logger.info(f"Epoch {state.epoch + 1} started.")
-
-    def on_epoch_end(self, args, state, control, **kwargs):
-        if self.epoch_start is None:
-            return
-        dur = time.perf_counter() - self.epoch_start
-        self.epoch_times.append({"epoch": state.epoch, "seconds": dur})
-        self.logger.info(f"Epoch {state.epoch} finished in {dur:.2f}s.")
-
-    def on_train_end(self, args, state, control, **kwargs):
-        if self.train_start is None:
-            return
-        total = time.perf_counter() - self.train_start
-        self.logger.info(f"Training finished in {total:.2f}s.")
-
-
 def load_data(cfg: dict):
     """
     Loads data from CSVs specified in config.
@@ -131,7 +100,6 @@ def load_data(cfg: dict):
         if path.exists():
             df = pd.read_csv(path)
 
-            # Ensure text is string and handle NaNs
             text_col = ds_cfg.get("text_column", "text")
             label_col = ds_cfg.get("label_column", "label")
             if text_col in df.columns:
@@ -226,62 +194,20 @@ def tokenize_function(batch, tokenizer, max_length: int, truncation: bool):
     return tokenizer(batch["text"], truncation=truncation, max_length=max_length, padding=False # Padding handled by DataCollator
      )
 
-def compute_metrics_classic(eval_pred):
-    preds, labels = eval_pred
-
-    if isinstance(preds, tuple):
-        preds = preds[0]
-
-    preds = np.argmax(preds, axis=-1)
-
-    precision, recall, f1, _ = precision_recall_fscore_support(labels, preds, average='binary', zero_division=0)
-    acc = accuracy_score(labels, preds)
-
-    return {"accuracy": acc, "f1": f1, "precision": precision, "recall": recall}
-
-def compute_metrics_(eval_pred):
-    logits, labels = eval_pred
-
-    if isinstance(logits, tuple):
-        logits = logits[0]
-
-    preds = np.argmax(logits, axis=-1)
-
-    acc = accuracy_metric.compute(predictions=preds, references=labels)["accuracy"]
-    precision = precision_metric.compute(predictions=preds, references=labels, average="binary", pos_label=1)["precision"]
-    recall = recall_metric.compute(predictions=preds, references=labels, average="binary", pos_label=1)["recall"]
-    f1 = f1_metric.compute(predictions=preds, references=labels, average="binary", pos_label=1)["f1"]
-
-    return {"accuracy": acc, "f1": f1, "precision": precision, "recall": recall}
-
-
 def compute_metrics(eval_pred):
     logits, labels = eval_pred
     if isinstance(logits, tuple):
         logits = logits[0]
 
     labels = np.asarray(labels)
-
-    # --- SET YOUR CUSTOM THRESHOLD HERE ---
-    #THRESHOLD = 0.15  # Lowered from 0.5 due to 7% class imbalance
-
-    # Case A: model outputs 2 logits per sample: shape (N, 2)
     if logits.ndim == 2 and logits.shape[1] == 2:
-        # softmax -> prob of class 1
         exp = np.exp(logits - np.max(logits, axis=-1, keepdims=True))
         probs = exp / exp.sum(axis=-1, keepdims=True)
         pos_scores = probs[:, 1]
-
-        # FIX: Do not use argmax. Use the threshold against pos_scores.
         preds = (pos_scores >= THRESHOLD).astype(int)
-
-    # Case B: model outputs 1 logit per sample: shape (N,) or (N,1)
     else:
         logits_1d = logits.reshape(-1)
-        # sigmoid -> prob of class 1
         pos_scores = 1.0 / (1.0 + np.exp(-logits_1d))
-
-        # FIX: Use custom threshold instead of 0.5
         preds = (pos_scores >= THRESHOLD).astype(int)
 
     try:
@@ -337,40 +263,6 @@ def logits_to_pos_scores(logits):
     logits_1d = logits.reshape(-1)
     return 1.0 / (1.0 + np.exp(-logits_1d))
 
-def find_best_threshold(y_true, pos_scores):
-    best = {"t": 0.5, "f1": -1, "p": 0, "r": 0}
-    for t in np.linspace(0.01, 0.99, 99):
-        y_pred = (pos_scores >= t).astype(int)
-        p, r, f1, _ = precision_recall_fscore_support(y_true, y_pred, average="binary", zero_division=0)
-        if f1 > best["f1"]:
-            best = {"t": float(t), "f1": float(f1), "precision": float(p), "recall": float(r)}
-    return best
-
-
-def print_threshold_sanity(scores, labels, threshold, title="Score / Threshold Sanity Check"):
-    scores = np.asarray(scores)
-    labels = np.asarray(labels).astype(int)
-
-    pred_mask = scores >= threshold
-    pred_rate = float(pred_mask.mean())
-    true_rate = float(labels.mean())
-
-    pred_pos = int(pred_mask.sum())
-    true_pos = int(labels.sum())
-    n = int(len(labels))
-
-    over_factor = pred_rate / (true_rate + 1e-12)
-
-    console.print(Panel(
-        "\n".join([
-            f"Threshold: {threshold:.3f}",
-            f"Scores: min={scores.min():.4f} | mean={scores.mean():.4f} | max={scores.max():.4f}",
-            f"Predicted positives: {pred_pos}/{n} ({pred_rate*100:.2f}%)",
-            f"True positives:      {true_pos}/{n} ({true_rate*100:.2f}%)",
-            f"Over prediction:     {over_factor:.2f}x",
-        ]),
-        title=title
-    ))
 
 def run_training(config_path: str):
     # Load Config
@@ -397,7 +289,6 @@ def run_training(config_path: str):
     tokenized_ds = dataset.map(tokenize_function, batched=True , fn_kwargs={"tokenizer": tokenizer, "max_length": max_len, "truncation": truncation})
 
     # Class Weights (for Imbalance)
-    # Class Weights (Softer)
     class_weights = None
     if cfg["imbalance_handling"]["use_class_weights"]:
         # Get labels
@@ -411,14 +302,7 @@ def run_training(config_path: str):
             classes=np.unique(labels),
             y=labels
         )
-
-        # Take the square root to make the ratio less extreme
-        # Example: Instead of 1:12, it becomes 1:3.5
-        #class_weights = np.sqrt(class_weights)
-
-        # Alternative: Hardcap the positive weight (e.g., max 5.0)
-        # class_weights[1] = min(class_weights[1], 5.0)
-
+        class_weights = np.sqrt(class_weights)
         console.print(
             Panel(f"Weights: {class_weights}", title="Imbalance Handling"))
     # Model
@@ -430,8 +314,8 @@ def run_training(config_path: str):
         num_labels=cfg["num_labels"],
         id2label=id2label,
         label2id=label2id,
-        hidden_dropout_prob=0.3,  # from the paper!
-        attention_probs_dropout_prob=0.3  # from the paper!,
+        #hidden_dropout_prob=0.3,
+        #attention_probs_dropout_prob=0.3
     )
     model = AutoModelForSequenceClassification.from_pretrained(model_name, config=model_config)
 
