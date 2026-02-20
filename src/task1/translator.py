@@ -29,7 +29,7 @@ TARGET_LANG = "German"
 SOURCE_LANG_COL = "en"
 TARGET_LANG_COL = "de"
 
-HOST =  "localhost" #"172.18.11.146"
+HOST =  "localhost"
 PORT = 1234 # 8080
 BASE_URL = "https://chat-ai.academiccloud.de/v1"
 MODEL_NAME = "mistralai_devstral-small-2-24b-instruct-2512" # "llama-3.1-sauerkrautlm-70b-instruct"  # "mistralai/Devstral-Small-2-24B-Instruct-2512"
